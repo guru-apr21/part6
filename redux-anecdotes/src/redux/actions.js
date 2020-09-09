@@ -5,6 +5,7 @@ import {
   DELETE_MESSAGE,
   VOTE_MESSAGE,
   FILTER,
+  INIT_ANECDOTES,
 } from "./actionTypes";
 
 export const incrementVote = (id) => {
@@ -47,5 +48,12 @@ export const filterInput = (input) => {
   return {
     type: FILTER,
     payload: input,
+  };
+};
+
+export const initializeAnecdotes = (payload) => {
+  return {
+    type: INIT_ANECDOTES,
+    payload,
   };
 };
