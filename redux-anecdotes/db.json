@@ -3,7 +3,7 @@
     {
       "content": "If it hurts, do it more often",
       "id": "47145",
-      "votes": 0
+      "votes": 1
     },
     {
       "content": "Adding manpower to a late software project makes it later!",
@@ -28,17 +28,22 @@
     {
       "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
       "id": "98312",
-      "votes": 2
+      "votes": 12
     },
     {
       "content": "What doesn't kill you makes you stronger",
-      "votes": 1,
+      "votes": 4,
       "id": "m8CPw_c"
     },
     {
       "content": "What doesn't kill you makes you stronger",
-      "votes": 1,
+      "votes": 8,
       "id": "g2hPklE"
+    },
+    {
+      "content": "What doesn't kill you makes you stronger",
+      "votes": 0,
+      "id": "_N7i1HV"
     }
   ]
 }

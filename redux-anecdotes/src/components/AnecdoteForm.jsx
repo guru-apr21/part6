@@ -1,17 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { createAnec } from "../redux/actions";
 import { setNotification } from "../redux/actions";
 
-const AnecdoteForm = () => {
-  const dispatch = useDispatch();
-
+const AnecdoteForm = (props) => {
   const addAnec = async (e) => {
     e.preventDefault();
     const content = e.target.anecdote.value;
     e.target.anecdote.value = "";
-    dispatch(createAnec(content));
-    dispatch(setNotification(`you added ${content}`, 5));
+    props.createAnec(content);
+    props.setNotification(`you added ${content}`, 5);
   };
 
   return (
@@ -25,4 +23,7 @@ const AnecdoteForm = () => {
   );
 };
 
-export default AnecdoteForm;
+const connectedAnecdoteForm = connect(null, { createAnec, setNotification })(
+  AnecdoteForm
+);
+export default connectedAnecdoteForm;
