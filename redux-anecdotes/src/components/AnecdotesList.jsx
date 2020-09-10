@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementVote } from "../redux/actions";
-import { voteMessage, deleteMessage } from "../redux/actions";
+import { setNotification } from "../redux/actions";
 
 const AnecdotesList = () => {
   const dispatch = useDispatch();
@@ -22,8 +22,7 @@ const AnecdotesList = () => {
             <button
               onClick={() => {
                 dispatch(incrementVote(anec.id));
-                dispatch(voteMessage(anec.content));
-                setTimeout(() => dispatch(deleteMessage()), 3000);
+                dispatch(setNotification(`you voted ${anec.content}`, 5));
               }}
             >
               vote

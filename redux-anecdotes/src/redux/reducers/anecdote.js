@@ -8,11 +8,7 @@ const anecdotes = (state = [], action) => {
       return action.payload;
     case VOTE: {
       const { id } = action.payload;
-      const anecdoteToChange = state.find((anec) => anec.id === id);
-      const changedAnec = {
-        ...anecdoteToChange,
-        votes: anecdoteToChange.votes + 1,
-      };
+      const changedAnec = action.payload;
       const anecdotesAfterChange = state.map((anec) =>
         anec.id === id ? changedAnec : anec
       );

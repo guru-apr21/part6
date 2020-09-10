@@ -1,46 +1,34 @@
 import {
   VOTE,
   NEW_ANEC,
-  ANEC_MESSAGE,
-  DELETE_MESSAGE,
-  VOTE_MESSAGE,
+  SET_MESSAGE,
   FILTER,
   INIT_ANECDOTES,
 } from "./actionTypes";
 
+import anecdoteServices from "../services/anecdotes";
+
 export const incrementVote = (id) => {
-  return {
-    type: VOTE,
-    payload: { id },
+  return async (dispatch) => {
+    const data = await anecdoteServices.incrementVote(id);
+    dispatch({ type: VOTE, payload: data });
   };
 };
 
 export const createAnec = (content) => {
-  const getId = () => (100000 * Math.random()).toFixed(0);
-
-  return {
-    type: NEW_ANEC,
-    payload: { content, votes: 0, id: getId() },
+  return async (dispatch) => {
+    const anecdote = await anecdoteServices.createAnecdote(content);
+    dispatch({ type: NEW_ANEC, payload: anecdote });
   };
 };
 
-export const voteMessage = (content) => {
-  return {
-    type: VOTE_MESSAGE,
-    payload: `you voted '${content}'`,
-  };
-};
-
-export const anecMessage = (content) => {
-  return {
-    type: ANEC_MESSAGE,
-    payload: `you added '${content}'`,
-  };
-};
-
-export const deleteMessage = () => {
-  return {
-    type: DELETE_MESSAGE,
+export const setNotification = (message, duration) => {
+  return (dispatch) => {
+    dispatch({ type: SET_MESSAGE, payload: message });
+    setTimeout(
+      () => dispatch({ type: SET_MESSAGE, payload: "" }),
+      duration * 1000
+    );
   };
 };
 
@@ -51,9 +39,9 @@ export const filterInput = (input) => {
   };
 };
 
-export const initializeAnecdotes = (payload) => {
-  return {
-    type: INIT_ANECDOTES,
-    payload,
+export const initializeAnecdotes = () => {
+  return async (dispatch) => {
+    const data = await anecdoteServices.getAll();
+    dispatch({ type: INIT_ANECDOTES, payload: data });
   };
 };

@@ -1,0 +1,8 @@
+PUT http://localhost:3001/anecdotes/m8CPw_c
+Content-Type: application/json
+
+{
+    "content": "What doesn't kill you makes you stronger",
+      "votes": 1,
+      "id": "m8CPw_c"
+}
